@@ -7,9 +7,9 @@ function compress(input, webp, grayscale, quality, originSize) {
 		.grayscale(grayscale)
 		.toFormat(format, {
 			quality: quality,
-			effort: 2,		// webp
-			progressive: true,	// jpeg
-			mozjpeg: true		// jpeg
+			effort: 1		// webp
+			//progressive: true,	// jpeg
+			//mozjpeg: true		// jpeg
 		})
 		.toBuffer({resolveWithObject: true})
 		.then(({data: output,info}) => {	// this way we can also get the info about output image, like height, width
