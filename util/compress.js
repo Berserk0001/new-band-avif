@@ -7,7 +7,7 @@ function compress(input, webp, grayscale, quality, originSize) {
 		.grayscale(grayscale)
 		.toFormat(format, {
 			quality: quality,
-			effort: 1		// webp
+			effort: 3		// webp
 			//progressive: true,	// jpeg
 			//mozjpeg: true		// jpeg
 		})
