@@ -3,11 +3,14 @@ const sharp = require("sharp");
 function compress(input, webp, grayscale, quality, originSize) {
 	const format = webp ? "webp" : "jpeg";
 
+const compressionQuality = quality * 0.1;
+quality = Math.ceil(compressionQuality);
+
 	return sharp(input)
 		.grayscale(grayscale)
 		.toFormat(format, {
 			quality: quality,
-			effort: 3		// webp
+			effort: 2		// webp
 			//progressive: true,	// jpeg
 			//mozjpeg: true		// jpeg
 		})
