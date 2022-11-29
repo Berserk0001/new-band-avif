@@ -65,7 +65,7 @@ exports.handler = async (event, context) => {
             }
 
             //console.log(`From ${originSize}, Saved: ${(originSize - output.length)/originSize}%`);
-            console.log(`From: ${originSize}, To: ${output.length}, Saved: ${(output.length - originSize)}`);
+            console.log(`From: ${originSize}, To: ${output.length}, Saved: ${(originSize - output.length)}`);
             const encoded_output = output.toString('base64');
             return {
                 statusCode: 200,
