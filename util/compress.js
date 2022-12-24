@@ -9,10 +9,10 @@ quality = Math.ceil(compressionQuality);
 	return sharp(input)
 		.grayscale(grayscale)
 		.toFormat(format, {
-			quality: quality,
-			effort: 2		// webp
-			//progressive: true,	// jpeg
-			//mozjpeg: true		// jpeg
+                quality: compressionQuality,
+                progressive: true,
+                optimizeScans: true,
+                effort: 0
 		})
 		.toBuffer({resolveWithObject: true})
 		.then(({data: output,info}) => {	// this way we can also get the info about output image, like height, width
