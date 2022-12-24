@@ -1,5 +1,5 @@
-const MIN_COMPRESS_LENGTH = 2048; // ~2kb
-const MIN_TRANSPARENT_COMPRESS_LENGTH = MIN_COMPRESS_LENGTH * 1; // ~2kb
+const MIN_COMPRESS_LENGTH = 2048; // ~2Kb
+const MIN_TRANSPARENT_COMPRESS_LENGTH = MIN_COMPRESS_LENGTH * 20; // ~40Kb
 
 function shouldCompress(originType, originSize, webp) {
 //function shouldCompress(originType, originSize) {
