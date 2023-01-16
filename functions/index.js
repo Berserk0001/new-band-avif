@@ -52,10 +52,10 @@ exports.handler = async (event, context) => {
                 data: await res.buffer(),
                 type: res.headers.get("content-type") || ""
             }
-	    const originSize = data.length;
+	    const originalSize = data.length;
         })
 
-        // const originSize = data.length;
+        const originSize = originalSize.length;
 
         if (shouldCompress(originType, originSize, webp)) {
             const { err, output, headers } = await compress(data, webp, grayscale, quality, originSize);   // compress
