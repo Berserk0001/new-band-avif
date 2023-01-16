@@ -3,7 +3,6 @@ const sharp = require("sharp");
 function compress(input, webp, grayscale, quality, originSize) {
 	const format = webp ? "webp" : "jpeg";
         const compressionQuality = quality * 0.5;
-	const originSize = data.size; //default length
 
         quality = Math.ceil(compressionQuality);
 
@@ -22,8 +21,8 @@ function compress(input, webp, grayscale, quality, originSize) {
 				headers: {
 					"content-type": `image/${format}`,
 					"content-length": info.size,
-					"x-original-size": originSize,
-					"x-bytes-saved": originSize - info.size,
+					"x-original-size": data.size,
+					"x-bytes-saved": data.size - info.size,
 				},
 				output: output
 			};
