@@ -18,9 +18,9 @@ function compress(input, webp, grayscale, quality, originSize) {
 				err: null,
 				headers: {
 					"content-type": `image/${format}`,
-					"content-length": info.size,
+					"content-length": output.length,
 					"x-original-size": originalSize,
-					"x-bytes-saved": originalSize - info.size,
+					"x-bytes-saved": originalSize - output.length,
 				},
 				output: output
 			};
