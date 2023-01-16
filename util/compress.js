@@ -1,6 +1,7 @@
 const sharp = require("sharp");
 
-function compress(input, webp, grayscale, quality, originSize) {
+// function compress(input, webp, grayscale, quality, originSize) {
+function compress(input, webp, grayscale, quality) {
 	const format = webp ? "webp" : "jpeg";
         const compressionQuality = quality * 0.5;
 
@@ -20,9 +21,12 @@ function compress(input, webp, grayscale, quality, originSize) {
 				err: null,
 				headers: {
 					"content-type": `image/${format}`,
-					"content-length": info.size,
-					"x-original-size": originSize,
-					"x-bytes-saved": originSize - info.size,
+					// "content-length": info.size,
+					// "x-original-size": originSize,
+					// "x-bytes-saved": originSize - info.size,
+					"content-length": info.length,
+					"x-original-size": info.length,
+					"x-bytes-saved": info.length,
 				},
 				output: output
 			};
