@@ -10,17 +10,17 @@ function compress(input, webp, grayscale, quality, originSize) {
 			quality: quality,
 			effort: 6
 		})
-		.toBuffer({resolveWithObject: false})
-		.then(({data: output,info}) => {	// this way we can also get the info about output image, like height, width
+		.toBuffer({resolveWithObject: true})
+		.then(({data: output, info}) => {	// this way we can also get the info about output image, like height, width
 		// .toBuffer()
 		// .then( output => {
 			return {
 				err: null,
 				headers: {
 					"content-type": `image/${format}`,
-					"content-length": output.length,
+					"content-length": info.length,
 					"x-original-size": originalSize,
-					"x-bytes-saved": originalSize - output.length,
+					"x-bytes-saved": originalSize - info.length,
 				},
 				output: output
 			};
