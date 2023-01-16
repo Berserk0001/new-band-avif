@@ -54,7 +54,7 @@ exports.handler = async (event, context) => {
             }
         })
 
-        const originSize = data.length;
+        const originSize = data.size; //default length
 
         if (shouldCompress(originType, originSize, webp)) {
             const { err, output, headers } = await compress(data, webp, grayscale, quality, originSize);   // compress
@@ -65,13 +65,13 @@ exports.handler = async (event, context) => {
             }
 
             //console.log(`From ${originSize}, Saved: ${(originSize - output.length)/originSize}%`);
-            console.log(`From: ${originSize}, To: ${output.length}, Saved: ${(originSize - output.length)}`);
+            console.log(`From: ${originSize}, To: ${output.size}, Saved: ${(originSize - output.size)}`); //default length
             const encoded_output = output.toString('base64');
             return {
                 statusCode: 200,
                 body: encoded_output,
                 isBase64Encoded: true,  // note: The final size we receive is `originSize` only, maybe it is decoding it server side, because at client side i do get the decoded image directly
-                // "content-length": encoded_output.length,     // this doesn't have any effect, this header contains the actual data size, (decrypted binary data size, not the base64 version)
+                "content-length": encoded_output.size,     // originally commented, default length this doesn't have any effect, this header contains the actual data size, (decrypted binary data size, not the base64 version)
                 headers: {
                     "content-encoding": "identity",
                     ...response_headers,
@@ -79,14 +79,14 @@ exports.handler = async (event, context) => {
                 }
             }
         } else {
-            console.log("Bypassing... Size: " , data.length);
+            console.log("Bypassing... Size: " , data.size);
             return {    // bypass
                 statusCode: 200,
                 body: data.toString('base64'),
                 isBase64Encoded: true,
                 headers: {
                     "content-encoding": "identity",
-                    // "x-proxy-bypass": '1',
+                    "x-proxy-bypass": '1', // originally commented
                     ...response_headers,
                 }
             }
