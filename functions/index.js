@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
 
     try {
         let response_headers = {};
-        const { data, type: originType } = await fetch(url, {
+        let { data, type: originType } = await fetch(url, {  //use const by default
             headers: {
                 ...pick(event.headers, ['cookie', 'dnt', 'referer']),
                 'user-agent': 'Bandwidth-Hero Compressor',
@@ -54,7 +54,7 @@ exports.handler = async (event, context) => {
             }
         })
 
-        const originSize = data.length;
+        let originSize = data.length;  //use const by default
 
         if (shouldCompress(originType, originSize, webp)) {
             const { err, output, headers } = await compress(data, webp, grayscale, quality, originSize);   // compress
