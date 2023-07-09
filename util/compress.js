@@ -1,7 +1,7 @@
 const sharp = require("sharp");
 
 function compress(input, webp, grayscale, quality, originSize) {
-	const format = webp ? "webp" : "jpg";
+	const format = webp ? "webp" : "jpeg";
         let compressionQuality = quality * 0.1;  //use const by default
 
         quality = Math.ceil(compressionQuality);
@@ -11,7 +11,6 @@ function compress(input, webp, grayscale, quality, originSize) {
 		.toFormat(format, {
 			quality: quality,
 			progressive: true,
-			chromaSubsampling: '4:4:4',
 			mozjpeg: true,
 			effort: 6
 		})
