@@ -10,7 +10,6 @@ function compress(input, webp, grayscale, quality, originSize) {
 		.grayscale(grayscale)
 		.toFormat(format, {
 			quality: quality,
-			progressive: true,
 			mozjpeg: true,
 			effort: 6
 		})
