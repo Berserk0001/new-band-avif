@@ -1,16 +1,16 @@
-const sharp = require("sharp");
+const sharp = require("sharp")
 
 function compress(input, webp, grayscale, quality, originSize) {
-	let format = webp ? "webp" : "jpeg";
-        let compressionQuality = quality * 0.1;  //use const by default
+	let format = webp ? "webp" : "jpeg"
+        let compressionQuality = quality * 0.1  //use const by default
 
-        quality = Math.ceil(compressionQuality);
+        //quality = Math.ceil(compressionQuality);
 
 	return sharp(input)
 		.grayscale(grayscale)
 		.toFormat(format, {
-			quality: quality,
-			mozjpeg: true,
+			quality: compressionQuality,
+			preset: 'picture',
 			effort: 6
 		})
 		.toBuffer({resolveWithObject: true})
