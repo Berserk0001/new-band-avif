@@ -1,6 +1,6 @@
 const sharp = require("sharp")
 
-function compress(input, webp, grayscale, quality, originSize) {
+function compress(input, avif, grayscale, quality, originSize) {
 	let format = avif ? "avif" : "jpeg"
         let compressionQuality = quality * 0.1  //use const by default
 
