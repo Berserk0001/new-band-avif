@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
     // by now, url is a string
     url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
 
-    let webp = !jpeg;  //use const by default
+    let avif = !jpeg;  //use const by default
     let grayscale = bw != 0;  //use const by default
     let quality = parseInt(l, 10) || DEFAULT_QUALITY;  //use const by default
 
@@ -56,8 +56,8 @@ exports.handler = async (event, context) => {
 
         let originSize = data.length;  //use const by default
 
-        if (shouldCompress(originType, originSize, webp)) {
-            let { err, output, headers } = await compress(data, webp, grayscale, quality, originSize);   // compress, use const by default
+        if (shouldCompress(originType, originSize, avif)) {
+            let { err, output, headers } = await compress(data, avif, grayscale, quality, originSize);   // compress, use const by default
 
             if (err) {
                 console.log("Conversion failed: ", url);
