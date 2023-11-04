@@ -10,7 +10,6 @@ function compress(input, webp, grayscale, quality, originSize) {
 		.grayscale(grayscale)
 		.toFormat(format, {
 			quality: compressionQuality,
-			preset: 'picture',
 			effort: 1
 		})
 		.toBuffer({resolveWithObject: true})
